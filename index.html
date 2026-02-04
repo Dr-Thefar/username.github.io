@@ -3,232 +3,256 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NORD PACK - Премиальная бумажная упаковка — производство</title>
-  <meta name="description" content="Бумажные пакеты, стаканы и конверты от производителя. Оптовые поставки. Быстрая отгрузка. Собственная логистика." />
+  <title>NORD PACK — бумажная упаковка от производителя</title>
+  <meta name="description" content="Бумажные пакеты, стаканы и конверты от производителя. Опт, сети, HoReCa. Быстрая отгрузка. Telegram для прайса." />
+
+  <!-- Премиальная типографика: заголовки + аккуратный текст -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* Премиальная тёмная палитра + “дорогой” акцент */
-      --bg0:#07080B;
-      --bg1:#0C0F15;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
-      --stroke: rgba(255,255,255,.12);
+      /* Светлая премиальность: тёплая бумага + золото */
+      --bg: #FBF7F1;        /* молочный */
+      --bg2:#F6EFE6;        /* тёплый беж */
+      --ink:#141414;        /* почти чёрный */
+      --muted:#5C5A55;      /* тёплый серый */
+      --line: rgba(20,20,20,.10);
 
-      --text:#EDEFF6;
-      --muted: rgba(237,239,246,.72);
+      --gold:#C9A24D;
+      --gold2:#E3C36B;
 
-      --gold:#D7B56D;
-      --gold2:#B08A3C;
-
-      --shadow: 0 18px 50px rgba(0,0,0,.55);
-      --radius: 18px;
+      --card:#FFFFFF;
+      --shadow: 0 18px 40px rgba(20,20,20,.08);
+      --shadow2: 0 10px 24px rgba(20,20,20,.06);
+      --r: 20px;
     }
 
-    *{ box-sizing: border-box; }
+    *{ box-sizing:border-box; }
     html,body{ height:100%; }
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", "Noto Sans", "Liberation Sans", sans-serif;
-      color: var(--text);
+      color:var(--ink);
+      font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(215,181,109,.18), transparent 60%),
-        radial-gradient(900px 550px at 85% 20%, rgba(119,198,255,.12), transparent 60%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
+        radial-gradient(900px 500px at 18% 8%, rgba(201,162,77,.14), transparent 60%),
+        radial-gradient(900px 600px at 86% 10%, rgba(20,20,20,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
       overflow-x:hidden;
     }
 
-    a{ color: inherit; text-decoration:none; }
-    .container{
-      width:min(1120px, calc(100% - 40px));
-      margin:0 auto;
+    /* легкая “бумажная” текстура */
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background-image:
+        radial-gradient(rgba(20,20,20,.04) 1px, transparent 1px);
+      background-size: 14px 14px;
+      opacity:.18;
+      mix-blend-mode:multiply;
     }
 
-    /* Верхняя навигация */
+    a{ color:inherit; text-decoration:none; }
+    .container{
+      width:min(1120px, calc(100% - 44px));
+      margin:0 auto;
+      position:relative;
+    }
+
+    /* Top bar */
     .topbar{
-      position: sticky;
+      position:sticky;
       top:0;
       z-index:10;
       backdrop-filter: blur(14px);
-      background: rgba(7,8,11,.55);
-      border-bottom: 1px solid rgba(255,255,255,.06);
+      background: rgba(251,247,241,.72);
+      border-bottom: 1px solid var(--line);
     }
     .topbar-inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:14px 0;
-      gap:18px;
+      gap:16px;
     }
+
     .brand{
-      display:flex; align-items:center; gap:12px;
-      letter-spacing:.4px;
-      font-weight:600;
-    }
-    .logo{
-      width:34px; height:34px; border-radius:10px;
-      background:
-        radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.38), transparent 60%),
-        linear-gradient(135deg, rgba(215,181,109,.95), rgba(176,138,60,.9));
-      box-shadow: 0 10px 25px rgba(215,181,109,.15);
-      border: 1px solid rgba(255,255,255,.14);
-    }
-    .nav{
       display:flex;
-      gap:18px;
       align-items:center;
+      gap:12px;
+    }
+    .mark{
+      width:34px;height:34px;border-radius:12px;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      box-shadow: 0 12px 26px rgba(201,162,77,.20);
+      border: 1px solid rgba(20,20,20,.10);
+      position:relative;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:7px;
+      border-radius:10px;
+      border: 1px solid rgba(255,255,255,.55);
+    }
+    .brand-title{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+    .brand-title b{
+      letter-spacing:.18em;
+      font-size:12px;
+      text-transform:uppercase;
+    }
+    .brand-title span{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:2px;
+    }
+
+    .nav{
+      display:flex; gap:18px;
       color: var(--muted);
       font-size:14px;
     }
-    .nav a:hover{ color: var(--text); }
+    .nav a{ padding:8px 0; border-bottom:1px solid transparent; }
+    .nav a:hover{ color:var(--ink); border-bottom-color: rgba(201,162,77,.55); }
 
-    .cta-row{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
-    /* Кнопки */
+    /* Buttons */
     .btn{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:12px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      color: var(--text);
-      box-shadow: 0 10px 30px rgba(0,0,0,.28);
+      border-radius: 999px;
+      border: 1px solid rgba(20,20,20,.12);
+      background: rgba(255,255,255,.60);
+      box-shadow: var(--shadow2);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
-      font-weight:600;
+      font-weight:700;
       font-size:14px;
       white-space:nowrap;
     }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.085);
-      border-color: rgba(255,255,255,.18);
-    }
+    .btn:hover{ transform: translateY(-1px); background:#fff; border-color: rgba(20,20,20,.16); }
 
     .btn-gold{
-      border: none;
-      background: linear-gradient(135deg, var(--gold), var(--gold2));
-      color: #1b1b1b;
-      box-shadow: 0 18px 50px rgba(215,181,109,.18);
+      border: 0;
+      color: #16130B;
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      box-shadow: 0 18px 36px rgba(201,162,77,.22);
     }
-    .btn-gold:hover{ transform: translateY(-1px); filter: brightness(1.02); }
+    .btn-gold:hover{ filter: brightness(1.02); }
 
-    .icon{
-      width:18px;height:18px; display:inline-block;
-    }
+    .icon{ width:18px; height:18px; display:inline-block; }
 
     /* Hero */
     .hero{
-      padding: 62px 0 26px;
-      position:relative;
+      padding: 64px 0 24px;
     }
     .hero-grid{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap:22px;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
       align-items:stretch;
     }
-    .badge{
+    .card{
+      background: rgba(255,255,255,.82);
+      border: 1px solid rgba(20,20,20,.10);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-inner{ padding: 26px; }
+
+    .kicker{
       display:inline-flex;
       align-items:center;
       gap:10px;
       padding:10px 12px;
       border-radius: 999px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
-      width: fit-content;
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(201,162,77,.35);
+      background: rgba(201,162,77,.10);
+      color: #6A5421;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
-    .badge b{ color: var(--text); font-weight:700; }
 
     h1{
-      margin: 14px 0 10px;
-      font-size: clamp(34px, 4.2vw, 56px);
+      font-family:"Playfair Display", serif;
+      font-size: clamp(34px, 4.4vw, 58px);
       line-height: 1.02;
+      margin: 14px 0 10px;
       letter-spacing: -0.02em;
     }
     .lead{
-      margin: 0 0 18px;
-      font-size: 18px;
-      line-height: 1.55;
+      margin: 0 0 16px;
+      font-size: 17px;
+      line-height: 1.65;
       color: var(--muted);
-      max-width: 56ch;
+      max-width: 62ch;
     }
-    .lead .hl{
-      color: var(--text);
-      font-weight:700;
-    }
+    .lead b{ color: var(--ink); }
 
     .hero-actions{
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      margin-top: 14px;
+      margin-top: 12px;
     }
 
-    /* Карточки */
-    .card{
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
-      border: 1px solid rgba(255,255,255,.10);
-      box-shadow: var(--shadow);
-    }
-    .card-inner{ padding: 22px; }
-
-    .hero-side{
-      position:relative;
-      overflow:hidden;
-    }
-    .hero-side:before{
-      content:"";
-      position:absolute;
-      inset:-2px;
-      background:
-        radial-gradient(320px 180px at 20% 10%, rgba(215,181,109,.22), transparent 60%),
-        radial-gradient(320px 220px at 90% 30%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      filter: blur(.0px);
-      z-index:0;
-    }
-    .hero-side .card-inner{
-      position:relative;
-      z-index:1;
-    }
-    .kpi{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:14px;
-      margin-top: 6px;
-    }
-    .kpi .tile{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      padding:14px;
-    }
-    .kpi .num{
-      font-size:22px;
-      font-weight:800;
-      letter-spacing: -0.02em;
-    }
-    .kpi .cap{
-      margin-top:6px;
+    .mini{
+      margin-top: 18px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
       color: var(--muted);
       font-size: 13px;
-      line-height: 1.35;
+    }
+    .mini .dot{
+      width:6px;height:6px;border-radius:99px;
+      background: rgba(201,162,77,.9);
+      display:inline-block;
+      margin: 0 8px 1px 0;
     }
 
-    /* Секции */
-    .section{
-      padding: 22px 0;
+    /* Side stats */
+    .side{
+      position:relative;
     }
-    .section-title{
+    .side:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(420px 220px at 30% 10%, rgba(201,162,77,.20), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.75));
+      z-index:0;
+    }
+    .side .card-inner{ position:relative; z-index:1; }
+
+    .stats{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-top: 14px;
+    }
+    .tile{
+      border-radius: 18px;
+      border: 1px solid rgba(20,20,20,.10);
+      background: rgba(255,255,255,.85);
+      padding:14px;
+    }
+    .tile b{ display:block; font-size:15px; }
+    .tile span{ display:block; margin-top:6px; color: var(--muted); font-size:12.5px; line-height:1.4; }
+
+    /* Sections */
+    .section{ padding: 26px 0; }
+    .section-head{
       display:flex;
       align-items:flex-end;
       justify-content:space-between;
@@ -238,93 +262,102 @@
     h2{
       margin:0;
       font-size: 22px;
-      letter-spacing: -0.01em;
+      letter-spacing:-0.01em;
     }
     .sub{
+      margin:0;
       color: var(--muted);
       font-size: 14px;
-      line-height: 1.5;
-      max-width: 70ch;
+      line-height: 1.6;
+      max-width: 78ch;
     }
 
     .grid-3{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
-      gap:14px;
+      gap:12px;
     }
     .service{
       padding:18px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      transition: transform .15s ease, background .15s ease;
+      border: 1px solid rgba(20,20,20,.10);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow2);
+      transition: transform .15s ease;
       min-height: 160px;
     }
-    .service:hover{ transform: translateY(-2px); background: rgba(255,255,255,.075); }
-    .service h3{
-      margin: 10px 0 8px;
-      font-size: 16px;
-    }
-    .service p{
-      margin:0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: 14px;
-    }
-    .pill{
+    .service:hover{ transform: translateY(-2px); }
+    .badge{
       display:inline-flex;
       align-items:center;
       gap:8px;
       font-size: 12px;
-      color: rgba(215,181,109,.95);
-      border: 1px solid rgba(215,181,109,.28);
-      background: rgba(215,181,109,.10);
+      color: #6A5421;
+      border: 1px solid rgba(201,162,77,.35);
+      background: rgba(201,162,77,.12);
       padding: 6px 10px;
       border-radius: 999px;
+      font-weight:700;
     }
+    .service h3{ margin:10px 0 8px; font-size:16px; }
+    .service p{ margin:0; color: var(--muted); font-size:14px; line-height:1.55; }
 
     .split{
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap:14px;
+      gap:12px;
     }
     .list{
       margin:0; padding-left: 18px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
       font-size: 14px;
     }
 
-    /* Контакты + футер */
-    .contact{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      flex-wrap:wrap;
-    }
-    .contact .left p{
-      margin: 8px 0 0;
-      color: var(--muted);
-      line-height: 1.5;
-    }
     .divider{
       height:1px;
-      background: rgba(255,255,255,.08);
-      margin: 18px 0;
+      background: rgba(20,20,20,.10);
+      margin: 16px 0;
     }
+
+    /* Sticky contact bubble */
+    .floating{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      display:flex;
+      gap:10px;
+      z-index:20;
+    }
+    .fab{
+      border-radius: 999px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.9);
+      border:1px solid rgba(20,20,20,.12);
+      box-shadow: var(--shadow);
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+    .fab-gold{
+      background: linear-gradient(135deg, var(--gold2), var(--gold));
+      border:0;
+      color:#16130B;
+    }
+
     footer{
-      padding: 18px 0 34px;
-      color: rgba(237,239,246,.55);
+      padding: 10px 0 34px;
+      color: rgba(20,20,20,.55);
       font-size: 13px;
     }
 
-    /* Адаптив */
     @media (max-width: 920px){
       .hero-grid{ grid-template-columns: 1fr; }
       .grid-3{ grid-template-columns: 1fr; }
       .split{ grid-template-columns: 1fr; }
       .nav{ display:none; }
+      .hero{ padding-top: 44px; }
     }
   </style>
 </head>
@@ -334,8 +367,11 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>NORD PACK</div>
+        <div class="mark" aria-hidden="true"></div>
+        <div class="brand-title">
+          <b>NORD PACK</b>
+          <span>бумажная упаковка от производителя</span>
+        </div>
       </div>
 
       <div class="nav">
@@ -345,20 +381,15 @@
         <a href="#contacts">Контакты</a>
       </div>
 
-      <div class="cta-row">
-        <!-- Telegram button -->
+      <div style="display:flex; gap:10px; align-items:center;">
         <a class="btn" href="https://t.me/USERNAME" target="_blank" rel="noopener">
           <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M21.8 4.6c.3-1.2-.9-2.1-2-1.7L2.9 9.4c-1.3.5-1.2 2.4.1 2.8l4.7 1.5 1.8 5.7c.4 1.2 2 1.4 2.7.4l2.7-3.5 4.9 3.6c1 .7 2.3.1 2.5-1.1L21.8 4.6Z" stroke="rgba(237,239,246,.9)" stroke-width="1.4"/>
-            <path d="M8 13.6 18.4 6.8" stroke="rgba(215,181,109,.9)" stroke-width="1.6" stroke-linecap="round"/>
+            <path d="M21.8 4.6c.3-1.2-.9-2.1-2-1.7L2.9 9.4c-1.3.5-1.2 2.4.1 2.8l4.7 1.5 1.8 5.7c.4 1.2 2 1.4 2.7.4l2.7-3.5 4.9 3.6c1 .7 2.3.1 2.5-1.1L21.8 4.6Z" stroke="rgba(20,20,20,.85)" stroke-width="1.4"/>
+            <path d="M8 13.6 18.4 6.8" stroke="rgba(201,162,77,.95)" stroke-width="1.6" stroke-linecap="round"/>
           </svg>
           Telegram
         </a>
-
-        <!-- Phone button (замените номер) -->
-        <a class="btn btn-gold" href="tel:+79999999999">
-          Позвонить
-        </a>
+        <a class="btn btn-gold" href="tel:+79999999999">Позвонить</a>
       </div>
     </div>
   </div>
@@ -368,52 +399,40 @@
       <div class="hero-grid">
         <div class="card">
           <div class="card-inner">
-            <div class="badge">
-              <span class="pill">Производитель</span>
-              <span>Опт • сети • HoReCa • маркетплейсы</span>
-            </div>
+            <div class="kicker">Опт • сети • HoReCa • e-commerce</div>
 
-            <h1>Упаковка, которая выглядит дорого — и продаёт ваш продукт.</h1>
+            <h1>Светлая премиальность.<br>Тёплый стиль. Золотой акцент.</h1>
+
             <p class="lead">
-              <span class="hl">Бумажные пакеты, стаканы и конверты</span> без бренда со склада.
-              Отгрузка <span class="hl">сразу</span>. Доставляем фурами — логистика под ключ.
+              <b>Пакеты, стаканы, конверты</b> без бренда со склада.
+              Отгрузка <b>сразу</b>. Доставка фурами и логистика под ключ.
+              Запросите прайс — ответим быстро.
             </p>
 
             <div class="hero-actions">
-              <a class="btn btn-gold" href="https://t.me/USERNAME" target="_blank" rel="noopener">Написать в Telegram</a>
+              <a class="btn btn-gold" href="https://t.me/USERNAME" target="_blank" rel="noopener">Получить прайс в Telegram</a>
               <a class="btn" href="#products">Смотреть ассортимент</a>
-              <a class="btn" href="#contacts">Получить прайс</a>
+              <a class="btn" href="#contacts">Коммерческое предложение</a>
             </div>
 
-            <div class="divider"></div>
-            <div class="sub">
-              *Замените <b>USERNAME</b> на ваш ник Telegram и номер телефона на реальный — и можно отправлять ссылку клиентам.
+            <div class="mini">
+              <span><span class="dot"></span>Отгрузка в день подтверждения</span>
+              <span><span class="dot"></span>Крупные партии</span>
+              <span><span class="dot"></span>Стабильные поставки</span>
             </div>
           </div>
         </div>
 
-        <div class="card hero-side">
+        <div class="card side">
           <div class="card-inner">
-            <h2 style="margin:0 0 10px;">Сейчас в наличии</h2>
-            <div class="sub">Крупные партии. Цена — от объёма. Быстрая отгрузка со склада.</div>
+            <h2 style="margin:0;">В наличии</h2>
+            <p class="sub" style="margin-top:8px;">Товар без бренда • скидки на объём • быстрые отгрузки.</p>
 
-            <div class="kpi">
-              <div class="tile">
-                <div class="num">Пакеты</div>
-                <div class="cap">Крафт / белые, с ручками и без</div>
-              </div>
-              <div class="tile">
-                <div class="num">Стаканы</div>
-                <div class="cap">Для кофе/напитков, разные объёмы</div>
-              </div>
-              <div class="tile">
-                <div class="num">Конверты</div>
-                <div class="cap">Почтовые и офисные форматы</div>
-              </div>
-              <div class="tile">
-                <div class="num">Доставка</div>
-                <div class="cap">Своя логистика • фуры • сроки 1–3 дня</div>
-              </div>
+            <div class="stats">
+              <div class="tile"><b>Бумажные пакеты</b><span>Крафт/белые • разные размеры</span></div>
+              <div class="tile"><b>Бумажные стаканы</b><span>Для кофе/напитков • разные объёмы</span></div>
+              <div class="tile"><b>Конверты</b><span>Офисные/почтовые • опт</span></div>
+              <div class="tile"><b>Доставка</b><span>Своя логистика • фуры • сроки 1–3 дня</span></div>
             </div>
 
             <div class="divider"></div>
@@ -424,43 +443,43 @@
     </section>
 
     <section id="products" class="section">
-      <div class="section-title">
+      <div class="section-head">
         <h2>Продукция</h2>
-        <div class="sub">Оптовые поставки со склада + возможность производства под объём.</div>
+        <p class="sub">Оптовые партии со склада + возможность производства под ваш объём.</p>
       </div>
 
       <div class="grid-3">
         <div class="service">
-          <div class="pill">№1 для HoReCa</div>
+          <span class="badge">Для HoReCa</span>
           <h3>Бумажные пакеты</h3>
-          <p>Пекарни, кофейни, магазины, доставки. Крупные партии, стабильные отгрузки.</p>
+          <p>Кофейни, пекарни, магазины, доставки. Регулярные поставки под график.</p>
         </div>
         <div class="service">
-          <div class="pill">Расходник каждый день</div>
+          <span class="badge">Расходник каждый день</span>
           <h3>Бумажные стаканы</h3>
-          <p>Кофе, напитки, мероприятия. Подходим для регулярных поставок в сети.</p>
+          <p>Для напитков и мероприятий. Быстрая отгрузка и стабильное качество.</p>
         </div>
         <div class="service">
-          <div class="pill">Для офисов и e-commerce</div>
+          <span class="badge">Офис и e-commerce</span>
           <h3>Конверты</h3>
-          <p>Офисные и почтовые форматы. Оптовые партии для компаний и продавцов.</p>
+          <p>Почтовые и офисные форматы. Оптовые партии для компаний и продавцов.</p>
         </div>
       </div>
     </section>
 
     <section id="benefits" class="section">
-      <div class="section-title">
-        <h2>Почему с нами удобно</h2>
-        <div class="sub">В упаковке побеждает не самый дешёвый — а тот, кто не создаёт проблем.</div>
+      <div class="section-head">
+        <h2>Преимущества</h2>
+        <p class="sub">Вы получаете поставщика, с которым удобно: сроки, логистика, объёмы.</p>
       </div>
 
       <div class="split">
         <div class="card"><div class="card-inner">
           <h3 style="margin:0 0 10px;">Скорость</h3>
           <ul class="list">
-            <li>Отгружаем сразу со склада</li>
+            <li>Отгрузка со склада — сразу</li>
             <li>Счёт/КП — быстро</li>
-            <li>Доставка фурами под объём</li>
+            <li>Партии от коробки до фуры</li>
           </ul>
         </div></div>
 
@@ -468,39 +487,37 @@
           <h3 style="margin:0 0 10px;">Контроль</h3>
           <ul class="list">
             <li>Своя логистика и логисты</li>
-            <li>Понятные сроки и трекинг</li>
-            <li>Регулярные поставки под график клиента</li>
+            <li>Понятные сроки поставки</li>
+            <li>Регулярные поставки под график</li>
           </ul>
         </div></div>
       </div>
     </section>
 
     <section id="logistics" class="section">
-      <div class="section-title">
+      <div class="section-head">
         <h2>Доставка</h2>
-        <div class="sub">Можем привезти фурой. Снимаем с клиента головную боль по перевозке.</div>
+        <p class="sub">Можем привезти фурой — снимаем с клиента головную боль по перевозке.</p>
       </div>
 
       <div class="card"><div class="card-inner">
-        <div class="sub">
+        <p class="sub" style="margin:0;">
           Доставка рассчитывается по направлению и объёму. Отгрузка возможна в день оплаты/подтверждения.
-          Для постоянных клиентов — закрепление графика поставок.
-        </div>
+          Для постоянных клиентов закрепляем график поставок.
+        </p>
       </div></div>
     </section>
 
     <section id="contacts" class="section">
       <div class="card">
-        <div class="card-inner contact">
-          <div class="left">
-            <h2 style="margin:0;">Связаться и получить прайс</h2>
-            <p>Напишите в Telegram — пришлём прайс и условия по объёму.</p>
+        <div class="card-inner" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;">
+          <div>
+            <h2 style="margin:0;">Получить прайс и условия</h2>
+            <p class="sub" style="margin-top:8px;">Напишите в Telegram — пришлём прайс и цену под объём.</p>
           </div>
 
-          <div class="cta-row">
-            <a class="btn btn-gold" href="https://t.me/USERNAME" target="_blank" rel="noopener">
-              Написать в Telegram
-            </a>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <a class="btn btn-gold" href="https://t.me/USERNAME" target="_blank" rel="noopener">Написать в Telegram</a>
             <a class="btn" href="tel:+79999999999">Позвонить</a>
           </div>
         </div>
@@ -508,9 +525,22 @@
 
       <footer>
         <div class="divider"></div>
-        © 2026 • NORD PACK • Оптовые поставки
+        © 2026 • NORD PACK • бумажная упаковка
       </footer>
     </section>
   </main>
+
+  <!-- Плавающие кнопки (быстрый контакт) -->
+  <div class="floating" aria-label="Быстрый контакт">
+    <a class="fab" href="https://t.me/USERNAME" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M21.8 4.6c.3-1.2-.9-2.1-2-1.7L2.9 9.4c-1.3.5-1.2 2.4.1 2.8l4.7 1.5 1.8 5.7c.4 1.2 2 1.4 2.7.4l2.7-3.5 4.9 3.6c1 .7 2.3.1 2.5-1.1L21.8 4.6Z" stroke="rgba(20,20,20,.85)" stroke-width="1.4"/>
+        <path d="M8 13.6 18.4 6.8" stroke="rgba(201,162,77,.95)" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      Telegram
+    </a>
+    <a class="fab fab-gold" href="tel:+79999999999">Позвонить</a>
+  </div>
+
 </body>
 </html>
